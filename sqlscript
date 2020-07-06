@@ -1,0 +1,28 @@
+USE [Temp]
+GO
+
+/****** Object:  Table [dbo].[Products]    Script Date: 7/6/2020 1:57:49 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Products](
+	[ProductId] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](100) NOT NULL,
+	[Category] [varchar](100) NULL,
+	[Color] [varchar](20) NULL,
+	[UnitPrice] [decimal](18, 0) NOT NULL,
+	[AvailableQuantity] [bigint] NOT NULL,
+	[CratedDate] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ProductId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Products] ADD  DEFAULT (getdate()) FOR [CratedDate]
+GO
